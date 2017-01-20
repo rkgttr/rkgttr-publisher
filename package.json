@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "rkgttr-publisher",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Events publisher.",
   "repository": "rkgttr/rkgttr-publisher",
   "author": "Erik Guittiere",
