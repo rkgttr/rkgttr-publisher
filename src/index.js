@@ -15,14 +15,26 @@ const pub = (() => {
     delete events[type];
   }
   return {
-    on(type, handler) {
+    /**
+     * Register an event handler
+     * @method on
+     * @param  {String}   type      Type of event to listen for or '*' for all events
+     * @param  {Function} handler   Function to call in response
+     */
+    on: (type, handler) => {
       if (!handler) {
         const err = new ReferenceError('handler not defined.');
         throw err;
       }
       listType(type).push(handler);
     },
-    off(type, handler) {
+    /**
+     * Remove an event handler
+     * @method on
+     * @param  {String}   type      Type of event to remove for or '*' for all events
+     * @param  {Function} handler   Handler function to remove
+     */
+    off: (type, handler) => {
       if (!handler) {
         var err = new ReferenceError(
           'handler not defined. if you wish to remove all handlers from the event please pass "*" as the handler'
@@ -37,7 +49,13 @@ const pub = (() => {
       if (~i) e.splice(i, 1);
       if (!e.length) removeType(type);
     },
-    trigger(type, ...args) {
+    /**
+     * Invoke all handlers for the given type
+     * @method trigger
+     * @param  {String}  type     The event to Invoke
+     * @param  {Any}    ...args   As many things as you want to pass to the handlers
+     */
+    trigger: (type, ...args) => {
       listType('*')
         .concat(listType(type))
         .forEach(handler => handler.call(null, ...args));
