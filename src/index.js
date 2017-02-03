@@ -58,7 +58,7 @@ const pub = (() => {
     trigger: (type, ...args) => {
       listType('*')
         .concat(listType(type))
-        .forEach(handler => handler.call(null, ...args));
+        .forEach(handler => handler(...args));
     }
   };
 })();
